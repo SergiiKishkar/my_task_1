@@ -15,7 +15,7 @@
       dest: "{{ path_dest_environment }}"
       mode: 0555
     with_fileglob: 
-      - "{{ source_folder }}/*.txt"
+      - "{{ path_dir_venvs }}/*.txt"
 
   
   
@@ -43,22 +43,22 @@
 #      src: "{{ path_dir_venvs }}{{ ans_name_conf }}.txt" 
 #      dest: "{{ path_dest_environment }}"
 #      mode: 0555
-           
-  - name: Setting the working environment and dependencies
-    shell: | 
-      cd {{ path_dest_environment }}
-      echo "ans_name_cohf - {{ ans_name_conf }}"
-      python3 -m venv {{ ans_name_conf }}
-      . {{ ans_name_conf }}/bin/activate
-      pip install -r {{ ans_name_conf }}.txt
-    register: results
-  - debug:
-      var: results
+#           
+#  - name: Setting the working environment and dependencies
+#    shell: | 
+#      cd {{ path_dest_environment }}
+#      echo "ans_name_cohf - {{ ans_name_conf }}"
+#      python3 -m venv {{ ans_name_conf }}
+#      . {{ ans_name_conf }}/bin/activate
+#      pip install -r {{ ans_name_conf }}.txt
+#    register: results
+#  - debug:
+#      var: results
 
   - name: run config
     ansible.builtin.command: 
       chdir: "{{ path_dest_environment }}"
-      cmd: ls -lh {{ ans_name_conf }}/bin/ # ls -lh {{ ans_name_conf }}/bin 
+      cmd: ls -lh {{ ans_name_conf }} # ls -lh {{ ans_name_conf }}/bin 
     register: command_output
   - name: command output
     ansible.builtin.debug:
