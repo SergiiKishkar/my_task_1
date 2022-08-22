@@ -8,6 +8,9 @@ name: repository-push-control
 on: 
   push:
     branches: [ "main" ]
+    paths-ignore:
+     - "Ansible/**"
+     - ".github/**"
 
 jobs:
   changes:
