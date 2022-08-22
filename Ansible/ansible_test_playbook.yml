@@ -17,8 +17,8 @@
     with_fileglob: 
       - "{{ path_dir_venvs }}/*.txt"
     register: results
-  - debug:
-      var: results
+#  - debug:
+#      var: results
 
   
   
@@ -60,7 +60,7 @@
 
   - name: run config
     ansible.builtin.command: 
-      chdir: "{{ path_dest_environment }}"
+#     chdir: "{{ path_dest_environment }}"
       cmd: echo "{{ path_dest_environment }}"  
       # ls -lh 
       # ls -lh {{ ans_name_conf }}/bin 
