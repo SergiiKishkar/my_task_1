@@ -16,23 +16,23 @@ jobs:
       - name: Git clone repository
         uses: actions/checkout@v3
         
-      - id: file_changes
-        uses: trilom/file-changes-action@v1.2.3
-        with:
-          # optional output format
-          output: 'json'
-          # optional fileoutput format
-          # fileOutput: 'csv'
-          
-      - name: Detect # Detect modified and added files in the repository
-        run: |
-          cat $HOME/files.json
-          cat $HOME/files_modified.json
-          cat $HOME/files_added.json
-          # echo '${{ steps.file_changes.outputs.files}}'
-          echo '${{ steps.file_changes.outputs.files_modified}}'
-          # echo '${{ steps.file_changes.outputs.files_added}}'
-          
+ #     - id: file_changes
+ #       uses: trilom/file-changes-action@v1.2.3
+ #       with:
+ #         # optional output format
+ #         output: 'json'
+ #         # optional fileoutput format
+ #         # fileOutput: 'csv'
+ #         
+ #     - name: Detect # Detect modified and added files in the repository
+ #       run: |
+ #         cat $HOME/files.json
+ #         cat $HOME/files_modified.json
+ #         cat $HOME/files_added.json
+ #         # echo '${{ steps.file_changes.outputs.files}}'
+ #         echo '${{ steps.file_changes.outputs.files_modified}}'
+ #         # echo '${{ steps.file_changes.outputs.files_added}}'
+ #        
       - name: Starting Playbook
         env:
           ext: "Ext of file of configuration"
