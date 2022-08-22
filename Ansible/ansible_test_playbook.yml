@@ -60,7 +60,8 @@
 
   - name: run config
     ansible.builtin.command: 
-      chdir: {{ path_dest_environment }}
+      chdir: 
+        - {{ path_dest_environment }}
       cmd: ls -lh 
       # echo "{{ path_dest_environment }}"  
       # ls -lh 
