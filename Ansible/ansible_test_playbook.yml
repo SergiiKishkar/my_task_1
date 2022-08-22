@@ -20,6 +20,15 @@
 #  - debug:
 #      var: results
 
+  - name: Setting the working environment and dependencies
+    shell: | 
+      cd {{ path_dest_environment }}
+      echo "ans_name_cohf - {{ ans_name_conf }}"
+      ls -lh
+    register: results
+  - debug:
+      var: results
+
   
   
   
