@@ -9,29 +9,40 @@
     path_dest_environment: /opt/python_venvs
         
   tasks: 
-  - name: Install Python
-    ansible.builtin.apt:
-      name: python3-pip
-      state: present
-      update_cache: true
-      
-  - name: Install Ansible
-    ansible.builtin.apt:
-      name: ansible
-      state: present
-      update_cache: true
- 
-  - name: Creating a projects folder
-    file:
-      path: "{{ path_dest_environment }}"
-      state: directory
-      mode: 0755  
-      
-  - name: Copying a configuration file to a remote machine
-    copy:
-      src: "{{ path_dir_venvs }}{{ ans_name_conf }}.txt" 
+  - name: Copying a TXT configuration file to a remote machine
+    ansible.builtin.copy:
+      src: "{{ item }}"     
       dest: "{{ path_dest_environment }}"
       mode: 0555
+    with_fileglob: 
+      - "{{ source_folder }}/*.txt"
+
+  
+  
+  
+#  - name: Install Python
+#    ansible.builtin.apt:
+#      name: python3-pip
+#      state: present
+#      update_cache: true
+      
+#  - name: Install Ansible
+#    ansible.builtin.apt:
+#      name: ansible
+#      state: present
+#      update_cache: true
+ 
+#  - name: Creating a projects folder
+#    file:
+#      path: "{{ path_dest_environment }}"
+#      state: directory
+#      mode: 0755  
+      
+#  - name: Copying a configuration file to a remote machine
+#    copy:
+#      src: "{{ path_dir_venvs }}{{ ans_name_conf }}.txt" 
+#      dest: "{{ path_dest_environment }}"
+#      mode: 0555
            
   - name: Setting the working environment and dependencies
     shell: | 
