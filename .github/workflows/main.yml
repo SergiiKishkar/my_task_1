@@ -8,8 +8,6 @@ name: repository-push-control
 on: 
   push:
     branches: [ "main" ]
-    paths:
-      - '**.txt'
     paths-ignore:
       - "Ansible/**"
       - ".github/**"
