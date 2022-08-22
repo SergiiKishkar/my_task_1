@@ -49,13 +49,7 @@
 #      name: ansible
 #      state: present
 #      update_cache: true
- 
-  - name: Creating a projects folder
-    file:
-      path: "{{ path_dest_environment }}"
-      state: directory
-      mode: 0755  
-      
+        
 #  - name: Copying a configuration file to a remote machine
 #    copy:
 #      src: "{{ path_dir_venvs }}{{ ans_name_conf }}.txt" 
@@ -73,14 +67,14 @@
 #  - debug:
 #      var: results
 
-  - name: run config
-    ansible.builtin.command: 
-      chdir: "{{ path_dest_environment }}"
-      cmd: ls -lh 
+#  - name: run config
+#    ansible.builtin.command: 
+#      chdir: "{{ path_dest_environment }}"
+#      cmd: ls -lh 
       # echo "{{ path_dest_environment }}"  
       # ls -lh 
       # ls -lh {{ ans_name_conf }}/bin 
-    register: command_output
-  - name: command output
-    ansible.builtin.debug:
-      var: command_output.stdout_lines
+#    register: command_output
+#  - name: command output
+#    ansible.builtin.debug:
+#      var: command_output.stdout_lines
