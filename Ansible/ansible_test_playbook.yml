@@ -16,6 +16,9 @@
       mode: 0555
     with_fileglob: 
       - "{{ path_dir_venvs }}/*.txt"
+    register: results
+  - debug:
+      var: results
 
   
   
