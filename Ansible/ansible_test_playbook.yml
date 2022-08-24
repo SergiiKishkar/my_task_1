@@ -4,6 +4,8 @@
   become: true
 
   vars:
+    
+    ans_conf_list: #list of txt conf files 
     ans_name_conf: "Python environment name without extension"
     path_dir_venvs: "{{ ans_path }}/venvs/" #Path to the folder with configuration files
     path_dest_environment: /opt/python_venvs
@@ -15,25 +17,31 @@
       state: directory
       mode: 0755  
       
-  - name: Copying a TXT configuration file to a remote machine
-    ansible.builtin.copy:
-      src: "{{ item }}"     
-      dest: "{{ path_dest_environment }}"
-      mode: 0555
-    with_fileglob: 
-      - "{{ path_dir_venvs }}/*.txt"
-    register: results
+  - debug: msg="{{item}}"
+    loop: "{{ lookup('file', 'files/branches.txt') }}"    
+      
+      
+      
+      
+ # - name: Copying a TXT configuration file to a remote machine
+ #   ansible.builtin.copy:
+ #     src: "{{ item }}"     
+ #     dest: "{{ path_dest_environment }}"
+ #     mode: 0555
+ #   with_fileglob: 
+ #     - "{{ path_dir_venvs }}/*.txt"
+ #   register: results
 #  - debug:
 #      var: results
 
-  - name: Setting the working environment and dependencies
-    shell: | 
-      cd {{ path_dest_environment }}
-      echo "ans_name_cohf - {{ ans_name_conf }}"
-      ls -lh
-    register: results
-  - debug:
-      var: results
+#  - name: Setting the working environment and dependencies
+#    shell: | 
+#      cd {{ path_dest_environment }}
+#      echo "ans_name_cohf - {{ ans_name_conf }}"
+#      ls -lh
+#    register: results
+#  - debug:
+#      var: results
 
   
   
