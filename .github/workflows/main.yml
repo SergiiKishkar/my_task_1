@@ -25,7 +25,7 @@ jobs:
           # optional output format
           output: 'csv'
           # optional fileoutput format
-          fileOutput: 'csv'
+          # fileOutput: 'csv'
           
       - name: Detect # Detect modified and added files in the repository
         run: |
