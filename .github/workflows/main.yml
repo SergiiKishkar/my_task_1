@@ -18,23 +18,36 @@ jobs:
     steps:
       - name: Git clone repository
         uses: actions/checkout@v3
-        
+      
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.3
         with:
+          output: ','
+          fileOutput: ','
+      - name: test
+        run: |
+          cat $HOME/files.csv
+      
+      
+      
+      
+      
+     # - id: file_changes
+     #   uses: trilom/file-changes-action@v1.2.3
+     #   with:
           # optional output format
           # output: 'csv'
           # optional fileoutput format
-          fileOutput: 'csv'
+     #     fileOutput: 'csv'
           
-      - name: Detect # Detect modified and added files in the repository
-        run: |
-          cat $HOME/files.csv
-          cat $HOME/files_modified.csv
-          cat $HOME/files_added.csv
-          # echo '${{ steps.file_changes.outputs.files}}'
-          echo '${{ steps.file_changes.outputs.files_modified}}'
-          # echo '${{ steps.file_changes.outputs.files_added}}'
+     # - name: Detect # Detect modified and added files in the repository
+     #   run: |
+     #     cat $HOME/files.csv
+     #     cat $HOME/files_modified.csv
+     #     cat $HOME/files_added.csv
+     #     # echo '${{ steps.file_changes.outputs.files}}'
+     #     echo '${{ steps.file_changes.outputs.files_modified}}'
+     #     # echo '${{ steps.file_changes.outputs.files_added}}'
          
       
       - name: Starting Playbook
